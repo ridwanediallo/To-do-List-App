@@ -85,4 +85,18 @@ class TaskLisk {
     todo.classList.toggle("line-through");
     this.saveTolocal();
   };
+
+  removeFromLocal(index) {
+    this.tasks = this.tasks.filter((task) => +task.index !== +index);
+    this.tasks.forEach((el, i) => {
+      el.index = i;
+    });
+    this.saveTolocal();
+    this.renderTodo(list);
+  }
+
+  removeItem(item) {
+    const idItem = item.id;
+    this.removeFromLocal(idItem);
+  }
 }
