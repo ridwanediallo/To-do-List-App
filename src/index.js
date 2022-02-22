@@ -16,4 +16,14 @@ class TaskLisk {
   constructor() {
     this.tasks = [];
   }
+
+  saveTolocal() {
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
+  }
+
+  getFromLocal = () => {
+    this.tasks = localStorage.getItem("tasks")
+      ? JSON.parse(localStorage.getItem("tasks"))
+      : [];
+  };
 }
