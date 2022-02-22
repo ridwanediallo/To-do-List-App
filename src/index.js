@@ -26,4 +26,54 @@ class TaskLisk {
       ? JSON.parse(localStorage.getItem("tasks"))
       : [];
   };
+
+  renderTodo = (list) => {
+    list.innerHTML = "";
+    this.tasks.forEach((el, i) => {
+      const item = document.createElement("li");
+      item.classList.add("item");
+      item.id = i;
+      item.innerHTML = `
+          <div class="left-itmes">
+          <input type="checkbox" class="checkbox" ${el.done ? "checked" : ""}>
+          <input type='text' class='todo ${
+            el.done ? "line-through" : ""
+          }' value='${el.desp}'>
+          </div>
+          <div>
+          <i class="fa-solid fa-ellipsis-vertical icon-dots"></i>
+          <i class="fa-solid fa-trash-can  icon-remove  hidden"></i>
+          </div>
+    `;
+
+      item.addEventListener("click", () => {
+        const iconRemove = item.querySelector(".icon-remove");
+        const iconDots = item.querySelector(".icon-dots");
+        iconRemove.classList.toggle("hidden");
+        iconDots.classList.toggle("hidden");
+        iconRemove.addEventListener("click", (event) => {
+          const taskItem = event.target.parentNode.parentNode;
+          this.removeItem(taskItem);
+        });
+      });
+
+      item.style.borderBottom = "1px solid #aaa";
+
+      const checkBox = item.querySelector(".checkbox");
+      const todo = item.querySelector(".todo");
+      todo.classList.add("todo-style");
+      checkBox.addEventListener("click", this.clickCheck);
+
+      list.append(item);
+    });
+  };
+
+  addTodo(desp, tasks) {
+    if (desp !== "") {
+      const todoItems = new TodoTask(desp, tasks);
+      this.tasks.push(todoItems);
+    }
+
+    inputTodo.value = "";
+  }
 }
