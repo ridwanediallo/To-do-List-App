@@ -1,0 +1,20 @@
+{
+  "name": "to-do-list-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ridwanediallo/To-do-List-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ridwanediallo/To-do-List-App/issues"
+  },
+  "homepage": "https://github.com/ridwanediallo/To-do-List-App#readme"
+}
