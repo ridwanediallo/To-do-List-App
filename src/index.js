@@ -76,4 +76,13 @@ class TaskLisk {
 
     inputTodo.value = "";
   }
+
+  clickCheck = (e) => {
+    const todo = e.target.parentNode.children[1];
+    const div = e.target.parentNode;
+    const { id } = div.parentNode;
+    this.tasks[id].done = !this.tasks[id].done;
+    todo.classList.toggle("line-through");
+    this.saveTolocal();
+  };
 }
